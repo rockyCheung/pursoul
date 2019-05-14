@@ -2,7 +2,7 @@
 *.swo
 *.sw
 venv
-markbj.sqlite
+*.sqlite
 migrations/*
 .idea
 .DS_Store
