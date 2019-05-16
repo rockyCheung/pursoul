@@ -1,5 +1,7 @@
 # pursoul
 
+[![Build Status](https://travis-ci.org/rockyCheung/pursoul.svg?branch=master)](https://travis-ci.org/rockyCheung/pursoul)
+
 pursoul是一个知识分享系统，基于开源知识分享项目进行二次开发。使用到的技术：
 
 * python3

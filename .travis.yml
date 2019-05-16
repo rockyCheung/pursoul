@@ -7,7 +7,6 @@ install:
 
 script:
   - ./init.sh
-  - ./start.sh
 
 after_success:
   - coveralls
