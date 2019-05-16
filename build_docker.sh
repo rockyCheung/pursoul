@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-docker build -t pursoul .
+sudo docker build -t pursoul .

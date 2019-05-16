@@ -1,9 +1,9 @@
 FROM python:3
-LABEL author="pathcurve"
 MAINTAINER rocky
 USER 751
 #RUN rm /etc/apt/sources.list
 #COPY sources.list /etc/apt/sources.list
+#RUN su - root
 #RUN apt-get update
 #RUN apt-get install -y apt-transport-https vim iproute2 net-tools ca-certificates curl wget software-properties-common
 #RUN apt-get -y install zlib*
@@ -14,8 +14,11 @@ COPY start.sh /pursoul
 COPY config.py /pursoul
 COPY manage.py /pursoul
 COPY requirements.txt /pursoul
+# Make port 80 available to the world outside this container
+EXPOSE 5000
 WORKDIR /pursoul
-RUN pip install -r requirements.txt -i https://pypi.douban.com/simple
+#RUN sudo -H pip install -r requirements.txt -i https://pypi.douban.com/simple
+RUN pip install --trusted-host pypi.python.org  -r requirements.txt
 RUN python manage.py db init
 RUN python manage.py db migrate
 RUN python manage.py db upgrade
