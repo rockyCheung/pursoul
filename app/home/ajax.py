@@ -12,9 +12,13 @@ from .import_html import *
 
 def upload_tmpimg(*args, **kwargs):
     image = request.files.get("image")
+    print('step 1')
+
     if not image or not validate_image(image.filename):
         return message("error", "", "数据有误")
+    print('step 2')
     path, name = generate_tmpfile(image)
+    print('step 3')
     value = {"url": path, "name":name}
     return message("success", value)
 

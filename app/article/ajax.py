@@ -55,13 +55,16 @@ def save_content_full(id, markdown = None, html=None):
 
 
 def upload_img(id, filename=None, name=None, *args, **kwargs):
+    print('@step 11')
     """ 上传图片 """
     article = Article.query.filter_by(id=id).first()
     if not article or article.user_id!=current_user.id:
         return message("error", "", "数据有误")
-
+    print('@step 12')
     image = ArticleImage.add(article.id, filename, name)
+    print('@step 13')
     value = {"id":image.id, "url":image.static_url(), "name": image.name}
+    print('@step 14')
     return message("success", value)
 
 

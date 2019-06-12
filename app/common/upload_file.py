@@ -23,11 +23,19 @@ def generate_tmpfile(file):
     @file: 文件对象
     """
     u = uuid.uuid1()
+    print('step 5')
     name, ext = os.path.splitext(file.filename)
+    print('step 6')
     _filename = ''.join([u.hex, ext])
+    print('step 7')
     path = '/'.join(['', current_app.config["TMP_PATH"], _filename])
+    print('step 8')
     tmp_path = ''.join([current_app.root_path, path])
+    print('step 9')
+    print('file:',file)
+    print('tmp_path:', tmp_path)
     file.save(tmp_path)
+    print('step 10')
     return (path, name)
 
 
@@ -38,11 +46,17 @@ def enable_tmpfile(dest_path, filename):
     @filename: 文件名
     """
     tmp_path = current_app.config["TMP_PATH"]
+    print('@step 12.4.1')
+    print('@step 12.4.1 tmp_path:',tmp_path)
     tmp_file = '/'.join([current_app.root_path, tmp_path, filename])
+    print('@step 12.4.1 tmp_file:', tmp_file)
     if not os.path.exists(tmp_file):
         return False
     dest_file = '/'.join([current_app.root_path, dest_path, filename])
+    print('@step 12.4.1 dest_file:', dest_file)
+
     shutil.move(tmp_file, dest_file)
+    print('@step 12.4.1 move')
     return True
 
 

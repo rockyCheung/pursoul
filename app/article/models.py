@@ -181,14 +181,19 @@ class ArticleImage(db.Model):
     @staticmethod
     def add(article_id, filename, name):
         image = ArticleImage()
+        print('@step 12.1')
         image.name = name
         image.filename = filename
         image.article_id = article_id
         db.session.add(image)
+        print('@step 12.2')
         db.session.commit()
+        print('@step 12.3')
         # 将图片从tmp目录移到article images目录下
         dest_path = current_app.config["ARTICLE_IMAGE_PATH"]
+        print('@step 12.4')
         enable_tmpfile(dest_path, filename)
+        print('@step 12.5')
         return image
 
     def delete(self):
