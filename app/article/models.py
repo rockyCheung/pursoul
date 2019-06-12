@@ -58,7 +58,8 @@ class Article(db.Model):
     def search(keyword, page, per_page):
         query = u"%{0}%".format(keyword)
         articles = Article.query.filter(db.and_(Article.access=="public",
-            Article.title.ilike(query))).order_by(Article.updatetime.desc())
+                                                Article.title.like(query))
+                                        ).order_by(Article.updatetime.desc())
         return articles.paginate(page, per_page = per_page, error_out = False)
 
     @staticmethod
